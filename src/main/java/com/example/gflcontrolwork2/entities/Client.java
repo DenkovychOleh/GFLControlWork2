@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "client")
 @NoArgsConstructor
@@ -23,4 +26,16 @@ public class Client {
     private String lastName;
     @Column(name = "phone", nullable = false, length = 10)
     private String phone;
+
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "client_id")
+    private Set<Order> orders = new LinkedHashSet<>();
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
 }

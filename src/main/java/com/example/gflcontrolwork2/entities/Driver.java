@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "driver")
 @NoArgsConstructor
@@ -35,6 +38,18 @@ public class Driver {
             joinColumns = @JoinColumn(name = "driver_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id"))
     private Car car;
+
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "driver_id")
+    private Set<Order> orders = new LinkedHashSet<>();
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
 
     public Car getCar() {
         return car;
