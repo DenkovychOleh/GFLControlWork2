@@ -1,0 +1,13 @@
+package com.example.gflcontrolwork2;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class GflControlWork2ApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
