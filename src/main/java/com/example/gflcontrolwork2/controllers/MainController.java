@@ -18,7 +18,7 @@ public class MainController {
     @GetMapping("/clients")
     public String showClients(Model model) {
         List<Client> clients = clientRepository.findAll();
-        model.addAttribute("clients",clients);
+        model.addAttribute("clients", clients);
         return "clients";
     }
 }
