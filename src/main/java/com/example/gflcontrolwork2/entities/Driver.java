@@ -58,4 +58,7 @@ public class Driver {
     public void setCar(Car car) {
         this.car = car;
     }
+    public String toString(){
+        return firstName+" "+lastName;
+    }
 }

@@ -16,6 +16,7 @@
                 <th>Phone number</th>
                 <th>Delete</th>
                 <th>Edit</th>
+                <th>Order history</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
                 <td th:text="${c.phone}"></td>
                 <td><a th:href="@{/clients/delete/{id}(id=${c.id})}">delete</a></td>
                 <td><a th:href="@{/clients/edit/{id}(id=${c.id})}">edit</a></td>
+                <td><a th:href="@{/clients/orders/{id}(id=${c.id})}">orders</a></td>
             </tr>
         </tbody>
     </table>

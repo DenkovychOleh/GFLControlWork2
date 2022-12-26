@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,9 +55,31 @@ public class MainController {
         Optional<Client> client = clientRepository.findById(id);
         if(client.isPresent()){
             model.addAttribute("client",client.get());
-            return "edit";
+            return "client_edit";
         } else {
             return "redirect:/clients";
         }
+    }
+
+    @PostMapping("/clients/update/{id}")
+    public String updateClient(@PathVariable int id, Client client) {
+        try {
+            if (client.getFirstName() != null && !client.getFirstName().isBlank() && client.getLastName() != null && !client.getLastName().isBlank() && client.getPhone() != null && !client.getPhone().isBlank()) {
+                clientRepository.save(client);
+            }
+        } catch (Exception ignored) {}
+        return "redirect:/clients";
+    }
+
+    @GetMapping("/clients/orders/{id}")
+    public String showClientOrder(@PathVariable(name = "id") int id, Model model){
+        Optional<Client> client = clientRepository.findById(id);
+       if(client.isPresent()){
+           model.addAttribute("client",client);
+           return "clients_orders";
+       }
+       else {
+           return "redirect:/clients";
+       }
     }
 }

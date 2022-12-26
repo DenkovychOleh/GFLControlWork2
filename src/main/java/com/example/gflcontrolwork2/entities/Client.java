@@ -38,4 +38,8 @@ public class Client {
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
+
+    public String toString(){
+        return firstName+" "+lastName;
+    }
 }

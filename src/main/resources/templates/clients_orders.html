@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Client's Orders</title>
+</head>
+<body>
+  <h2>Client's orders</h2>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Client</th>
+        <th>Driver</th>
+        <th>Finish address</th>
+        <th>Start address</th>
+        <th>Passengers</th>
+        <th>Distance</th>
+        <th>Average consumption</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr th:each="te : ${client}">
+      <td th:text="${te.}"></td>
+      <td th:text="${c.firstName}"></td>
+      <td th:text="${c.lastName}"></td>
+      <td th:text="${c.phone}"></td>
+      <td><a th:href="@{/clients/delete/{id}(id=${c.id})}">delete</a></td>
+      <td><a th:href="@{/clients/edit/{id}(id=${c.id})}">edit</a></td>
+      <td><a th:href="@{/clients/orders/{id}(id=${c.id})}">orders</a></td>
+  </tr>
+  </tbody>
+  </form>
+</body>
+</html>
