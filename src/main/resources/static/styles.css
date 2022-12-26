@@ -1,11 +1,27 @@
 table {
-    background-color: lightblue;
+    background-color: cadetblue;
 }
 
 th {
-    background-color: azure;
+    background-color: cornflowerblue;
 }
 
 td {
-    background-color: cornsilk;
+    background-color: lightgreen;
+}
+body {
+    background-color: lightblue;
+}
+.centre{
+    display: flex;
+    justify-content: center;
+}
+.buttons{
+    display: flex;
+    margin: 10px;
+    justify-content: space-around;
+}
+.button{
+    height: 100px;
+    width: 200px;
 }
