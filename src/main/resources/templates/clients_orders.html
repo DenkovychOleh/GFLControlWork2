@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Client's Orders</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
 </head>
 <body>
 <table>
@@ -14,6 +14,7 @@
         <th>Date</th>
         <th>Client</th>
         <th>Driver</th>
+        <th>Car</th>
         <th>Start address</th>
         <th>Finish address</th>
         <th>Passengers</th>
@@ -27,6 +28,7 @@
     <td th:text="${cl.showDate()}"></td>
     <td th:text="${cl.client.toString()}"></td>
     <td th:text="${cl.driver.toString()}"></td>
+    <td th:text="${cl.driver.car.showCar()}"></td>
     <td th:text="${cl.start}"></td>
     <td th:text="${cl.finish}"></td>
     <td th:text="${cl.passengers}"></td>

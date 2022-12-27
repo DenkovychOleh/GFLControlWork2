@@ -19,6 +19,7 @@ public class Car {
     private String model;
     @Column(name = "year", nullable = false)
     private Integer year;
+
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
     @ManyToOne(optional = false)
@@ -59,5 +60,8 @@ public class Car {
 
     public void setDriver(Driver driver) {
         this.driver = driver;
+    }
+    public String showCar(){
+        return brand + " " + model;
     }
 }

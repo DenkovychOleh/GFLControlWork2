@@ -1,7 +1,9 @@
 package com.example.gflcontrolwork2.entities;
 
+import com.example.gflcontrolwork2.repositories.OrderRepository;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Formula;
 
 import java.util.Calendar;
 import java.util.Date;

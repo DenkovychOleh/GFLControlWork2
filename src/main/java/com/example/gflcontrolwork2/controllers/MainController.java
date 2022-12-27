@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -74,22 +75,32 @@ public class MainController {
         return "redirect:/clients";
     }
 
-//    @GetMapping("/clients/orders/{id}")
-//    public String showClientOrder(@PathVariable(name = "id") int id, Model model){
-//        Optional<Client> client = clientRepository.findById(id);
-//        if(client.isPresent()){
-//            model.addAttribute("client",client);
-//            return "clients_orders";
-//        }
-//        else {
-//            return "redirect:/clients";
-//        }
-//    }
     @GetMapping("/clients/orders/{id}")
     public String showClientOrder(@PathVariable(name = "id") int id, Model model){
         List<Order> client = orderRepository.findByF(id);
         model.addAttribute("client",client);
         return "clients_orders";
+    }
 
+    @GetMapping("/clients/add")
+    public String showAddClient(Model model) {
+        return "add_client";
+    }
+
+    @PostMapping("/clients/new")
+    public String addClient(@RequestParam String first_name, @RequestParam String last_name, @RequestParam String phone, Model model){
+        Client client = new Client();
+        try {
+            client.setFirstName(first_name);
+            client.setLastName(last_name);
+            client.setPhone(phone);
+            if (client.getFirstName() != null && !client.getFirstName().isBlank() && client.getLastName() != null && !client.getLastName().isBlank() && client.getPhone() != null && !client.getPhone().isBlank()) {
+                model.addAttribute("client",client);
+                clientRepository.save(client);
+            }
+            return "redirect:/clients";
+        } catch (Exception ignored){
+            return "redirect:/add_client";
+        }
     }
 }
