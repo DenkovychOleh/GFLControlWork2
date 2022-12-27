@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Client's Orders</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<table>
   <h2>Client's orders</h2>
     <thead>
       <tr>
@@ -12,24 +14,27 @@
         <th>Date</th>
         <th>Client</th>
         <th>Driver</th>
-        <th>Finish address</th>
         <th>Start address</th>
+        <th>Finish address</th>
         <th>Passengers</th>
         <th>Distance</th>
         <th>Average consumption</th>
       </tr>
   </thead>
   <tbody>
-    <tr th:each="te : ${client}">
-      <td th:text="${te.}"></td>
-      <td th:text="${c.firstName}"></td>
-      <td th:text="${c.lastName}"></td>
-      <td th:text="${c.phone}"></td>
-      <td><a th:href="@{/clients/delete/{id}(id=${c.id})}">delete</a></td>
-      <td><a th:href="@{/clients/edit/{id}(id=${c.id})}">edit</a></td>
-      <td><a th:href="@{/clients/orders/{id}(id=${c.id})}">orders</a></td>
+  <tr th:each="cl : ${client}">
+    <td th:text="${cl.id}"></td>
+    <td th:text="${cl.showDate()}"></td>
+    <td th:text="${cl.client.toString()}"></td>
+    <td th:text="${cl.driver.toString()}"></td>
+    <td th:text="${cl.start}"></td>
+    <td th:text="${cl.finish}"></td>
+    <td th:text="${cl.passengers}"></td>
+    <td th:text="${cl.dist}"></td>
+    <td th:text="${cl.consumption}"></td>
   </tr>
   </tbody>
+  </table>
   </form>
 </body>
 </html>

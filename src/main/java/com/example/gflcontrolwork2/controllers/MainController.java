@@ -3,9 +3,11 @@ package com.example.gflcontrolwork2.controllers;
 import com.example.gflcontrolwork2.entities.Car;
 import com.example.gflcontrolwork2.entities.Client;
 import com.example.gflcontrolwork2.entities.Driver;
+import com.example.gflcontrolwork2.entities.Order;
 import com.example.gflcontrolwork2.repositories.CarRepository;
 import com.example.gflcontrolwork2.repositories.ClientRepository;
 import com.example.gflcontrolwork2.repositories.DriverRepository;
+import com.example.gflcontrolwork2.repositories.OrderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,7 @@ public class MainController {
     private final ClientRepository clientRepository;
     private final DriverRepository driverRepository;
     private final CarRepository carRepository;
+    private final OrderRepository orderRepository;
 
     @GetMapping("/clients")
     public String showClients(Model model) {
@@ -71,15 +74,22 @@ public class MainController {
         return "redirect:/clients";
     }
 
+//    @GetMapping("/clients/orders/{id}")
+//    public String showClientOrder(@PathVariable(name = "id") int id, Model model){
+//        Optional<Client> client = clientRepository.findById(id);
+//        if(client.isPresent()){
+//            model.addAttribute("client",client);
+//            return "clients_orders";
+//        }
+//        else {
+//            return "redirect:/clients";
+//        }
+//    }
     @GetMapping("/clients/orders/{id}")
     public String showClientOrder(@PathVariable(name = "id") int id, Model model){
-        Optional<Client> client = clientRepository.findById(id);
-       if(client.isPresent()){
-           model.addAttribute("client",client);
-           return "clients_orders";
-       }
-       else {
-           return "redirect:/clients";
-       }
+        List<Order> client = orderRepository.findByF(id);
+        model.addAttribute("client",client);
+        return "clients_orders";
+
     }
 }

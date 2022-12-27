@@ -3,6 +3,7 @@ package com.example.gflcontrolwork2.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -56,5 +57,9 @@ public class Order {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public String showDate(){
+        return date.get(Calendar.DATE) + "-" + date.get(Calendar.MONTH) + "-" +date.get(Calendar.YEAR);
     }
 }
