@@ -17,6 +17,7 @@
     <th>Experience</th>
     <th>Phone number</th>
     <th>tariff</th>
+    <th>Cars</th>
     <th>Delete</th>
     <th>Edit</th>
     <th>Order history</th>
@@ -31,6 +32,7 @@
     <td th:text="${c.exp}"></td>
     <td th:text="${c.phone}"></td>
     <td th:text="${c.tariff}"></td>
+    <td><a th:href="@{/drivers/car/{id}(id=${c.id})}">cars</a></td>
     <td><a th:href="@{/drivers/delete/{id}(id=${c.id})}">delete</a></td>
     <td><a th:href="@{/drivers/edit/{id}(id=${c.id})}">edit</a></td>
     <td><a th:href="@{/drivers/orders/{id}(id=${c.id})}">orders</a></td>

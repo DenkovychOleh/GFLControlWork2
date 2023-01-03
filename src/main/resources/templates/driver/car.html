@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>cars</title>
+    <link rel="stylesheet" type="text/css" href="../../styles.css">
+</head>
+<body>
+<h1>Cars</h1>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Year</th>
+<!--        <th>Type</th>-->
+<!--        <th>Passenger's seats</th>-->
+<!--        <th>Fuel type</th>-->
+<!--        <th>Fuel capacity</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cl : ${car}">
+        <td th:text="${cl.id}"></td>
+        <td th:text="${cl.brand}"></td>
+        <td th:text="${cl.model}"></td>
+        <td th:text="${cl.year}"></td>
+<!--        <td th:text="${cl.typeCar.type}"></td>-->
+<!--        <td th:text="${cl.typeCar.seats}"></td>-->
+<!--        <td th:text="${cl.fuel.fuel}"></td>-->
+<!--        <td th:text="${cl.typeCar.fuelCapacity}"></td>-->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

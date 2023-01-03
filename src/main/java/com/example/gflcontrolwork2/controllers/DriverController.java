@@ -1,7 +1,9 @@
 package com.example.gflcontrolwork2.controllers;
 
+import com.example.gflcontrolwork2.entities.Car;
 import com.example.gflcontrolwork2.entities.Driver;
 import com.example.gflcontrolwork2.entities.Order;
+import com.example.gflcontrolwork2.repositories.CarRepository;
 import com.example.gflcontrolwork2.repositories.DriverRepository;
 import com.example.gflcontrolwork2.repositories.OrderRepository;
 import lombok.AllArgsConstructor;
@@ -15,8 +17,10 @@ import java.util.Optional;
 @Controller
 @AllArgsConstructor
 public class DriverController {
-    DriverRepository driverRepository;
-    OrderRepository orderRepository;
+    private final DriverRepository driverRepository;
+    private final OrderRepository orderRepository;
+
+    private final CarRepository carRepository;
 
     @GetMapping({"/drivers", "/drivers/back"})
     public String showDrivers(Model model) {
@@ -78,10 +82,16 @@ public class DriverController {
         return "redirect:/add";
     }
     @GetMapping("/drivers/orders/{id}")
-    public String showClientOrder(@PathVariable(name = "id") int id, Model model){
+    public String showDriverOrders(@PathVariable(name = "id") int id, Model model){
         List<Order> driver = orderRepository.findByD(id);
         model.addAttribute("driver",driver);
         return "driver/orders";
+    }
+    @GetMapping("/drivers/car/{id}")
+    public String showCar(@PathVariable(name = "id") int id, Model model){
+        List<Car> car = carRepository.findCar(id);
+        model.addAttribute("car",car);
+        return "driver/car";
     }
 
     private boolean checkDriver(Driver driver) {

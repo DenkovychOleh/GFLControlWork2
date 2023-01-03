@@ -62,7 +62,7 @@ public class ClientController {
 
     @GetMapping("/clients/add")
     public String showAddClient(Model model) {
-        return "add_client";
+        return "client/add_client";
     }
 
     @PostMapping("/clients/new")
