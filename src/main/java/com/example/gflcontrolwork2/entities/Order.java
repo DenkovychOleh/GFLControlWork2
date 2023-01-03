@@ -64,4 +64,8 @@ public class Order {
     public String showDate(){
         return date.get(Calendar.DATE) + "-" + date.get(Calendar.MONTH) + "-" +date.get(Calendar.YEAR);
     }
+    public String showPrice(){
+        double res = ((dist/100)*consumption*driver.getCar().getFuel().getPrice())*2 + getDriver().getTariff()*dist;
+        return String.format("%.2f",res);
+    }
 }

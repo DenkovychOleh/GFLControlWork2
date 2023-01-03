@@ -7,14 +7,14 @@
 </head>
 <body>
     <h2>Edit your client</h2>
-    <form action="#" th:action="@{/clients/update/{id}(id=${client.id})}" th:object="${client}" method="post">
+    <form action="#" th:action="@{/client/clients/update/{id}(id=${client.id})}" th:object="${client}" method="post">
         <label for="first_name">Fist Name</label>
         <input type="text" th:field="*{firstName}" id="first_name"></br>
         <label for="last_name">Last Name</label>
         <input type="text" th:field="*{lastName}" id="last_name"></br>
         <label for="phone">Phone number</label>
         <input type="text" th:field="*{phone}" id="phone"></br>
-        <input type="submit" value="Update first name">
+        <input type="submit" value="Update!">
     </form>
 </body>
 </html>

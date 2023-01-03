@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Drivers</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<h2>List of drivers</h2>
+<table>
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Age</th>
+    <th>Experience</th>
+    <th>Phone number</th>
+    <th>tariff</th>
+    <th>Delete</th>
+    <th>Edit</th>
+    <th>Order history</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="c : ${drivers}">
+    <td th:text="${c.id}"></td>
+    <td th:text="${c.firstName}"></td>
+    <td th:text="${c.lastName}"></td>
+    <td th:text="${c.age}"></td>
+    <td th:text="${c.exp}"></td>
+    <td th:text="${c.phone}"></td>
+    <td th:text="${c.tariff}"></td>
+    <td><a th:href="@{/drivers/delete/{id}(id=${c.id})}">delete</a></td>
+    <td><a th:href="@{/drivers/edit/{id}(id=${c.id})}">edit</a></td>
+    <td><a th:href="@{/drivers/orders/{id}(id=${c.id})}">orders</a></td>
+  </tr>
+  </tbody>
+</table>
+<div><button onclick="location.href='drivers/add'" class="button"><h2>Add driver</h2></button></div>
+</body>
+</html>

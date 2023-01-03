@@ -24,7 +24,7 @@ public class ClientController {
     public String showClients(Model model) {
         List<Client> clients = clientRepository.findAll();
         model.addAttribute("clients", clients);
-        return "clients";
+        return "client/clients";
     }
     @GetMapping("/clients/delete/{id}")
     public String deleteClient(@PathVariable(name = "id") int id){
@@ -37,7 +37,7 @@ public class ClientController {
         Optional<Client> client = clientRepository.findById(id);
         if(client.isPresent()){
             model.addAttribute("client",client.get());
-            return "client_edit";
+            return "client/client_edit";
         } else {
             return "redirect:/clients";
         }
@@ -57,7 +57,7 @@ public class ClientController {
     public String showClientOrder(@PathVariable(name = "id") int id, Model model){
         List<Order> client = orderRepository.findByF(id);
         model.addAttribute("client",client);
-        return "clients_orders";
+        return "client/clients_orders";
     }
 
     @GetMapping("/clients/add")

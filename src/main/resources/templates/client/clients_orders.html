@@ -20,6 +20,7 @@
         <th>Passengers</th>
         <th>Distance</th>
         <th>Average consumption</th>
+        <th>Price</th>
       </tr>
   </thead>
   <tbody>
@@ -34,6 +35,7 @@
     <td th:text="${cl.passengers}"></td>
     <td th:text="${cl.dist}"></td>
     <td th:text="${cl.consumption}"></td>
+    <td th:text="${cl.showPrice()}"></td>
   </tr>
   </tbody>
   </table>
