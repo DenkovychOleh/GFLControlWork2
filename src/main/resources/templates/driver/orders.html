@@ -2,34 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Client's Orders</title>
-    <link rel="stylesheet" type="text/css" href="../../styles.css">
+    <title>Driver's orders</title>
+  <link rel="stylesheet" type="text/css" href="../../styles.css">
+
 </head>
 <body>
-<h2>Client's orders</h2>
+<h2>Driver's orders</h2>
 <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Date</th>
-        <th>Client</th>
-        <th>Driver</th>
-        <th>Car</th>
-        <th>Start address</th>
-        <th>Finish address</th>
-        <th>Passengers</th>
-        <th>Distance</th>
-        <th>Average consumption</th>
-        <th>Price</th>
-      </tr>
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Date</th>
+    <th>Driver</th>
+    <th>Car</th>
+    <th>Client</th>
+    <th>Start address</th>
+    <th>Finish address</th>
+    <th>Passengers</th>
+    <th>Distance</th>
+    <th>Average consumption</th>
+    <th>Price</th>
+  </tr>
   </thead>
   <tbody>
-  <tr th:each="cl : ${client}">
+  <tr th:each="cl : ${driver}">
     <td th:text="${cl.id}"></td>
     <td th:text="${cl.showDate()}"></td>
-    <td th:text="${cl.client.toString()}"></td>
     <td th:text="${cl.driver.toString()}"></td>
     <td th:text="${cl.driver.car.showCar()}"></td>
+    <td th:text="${cl.client.toString()}"></td>
     <td th:text="${cl.start}"></td>
     <td th:text="${cl.finish}"></td>
     <td th:text="${cl.passengers}"></td>
@@ -38,6 +39,7 @@
     <td th:text="${cl.showPrice()}"></td>
   </tr>
   </tbody>
-  </table>
+</table>
+
 </body>
 </html>

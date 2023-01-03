@@ -1,7 +1,9 @@
 package com.example.gflcontrolwork2.controllers;
 
 import com.example.gflcontrolwork2.entities.Driver;
+import com.example.gflcontrolwork2.entities.Order;
 import com.example.gflcontrolwork2.repositories.DriverRepository;
+import com.example.gflcontrolwork2.repositories.OrderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class DriverController {
     DriverRepository driverRepository;
+    OrderRepository orderRepository;
 
     @GetMapping({"/drivers", "/drivers/back"})
     public String showDrivers(Model model) {
@@ -73,6 +76,12 @@ public class DriverController {
             return "redirect:/drivers";
         } catch (Exception ignored) {}
         return "redirect:/add";
+    }
+    @GetMapping("/drivers/orders/{id}")
+    public String showClientOrder(@PathVariable(name = "id") int id, Model model){
+        List<Order> driver = orderRepository.findByD(id);
+        model.addAttribute("driver",driver);
+        return "driver/orders";
     }
 
     private boolean checkDriver(Driver driver) {
